@@ -16,7 +16,7 @@ import string
 import getopt
 import sys
 import os
-#The learning the of RNN model
+#The learning rate the of RNN model
 LR=0.001
 MODEL_NAME = 'emotion-{}-{}.model'.format(LR,'4conv-basic-video')
 #Making a list of the labels that we require 
@@ -106,6 +106,7 @@ print ('Predict')
 model.fit(X_train, Y_train, n_epoch=150,validation_set=(X_test, Y_test), show_metric=True,
           batch_size=34)
 print ('Testing sample')
+#The location of the txt file of user defined test data
 with open("/home/pratyush/Desktop/paraprocess/stry.txt", "r") as file:
 	test = file.read().split('\n\n')
 	print(test)
@@ -114,7 +115,7 @@ test = np.array(list(vocab_processor.fit_transform(test)))
 test = pad_sequences(test, maxlen=model_size, value=0.)
 model_out=model.predict(test)
 
-#if np.argmax(model_out) == 0:print('Happy')
+if np.argmax(model_out) == 0:print('Happy')
 if np.argmax(model_out) == 1:print('Sad')
-#if np.argmax(model_out) == 2:print('Surprise')
-#if np.argmax(model_out) == 3:print('Disgust')
+if np.argmax(model_out) == 2:print('Surprise')
+if np.argmax(model_out) == 3:print('Disgust')
