@@ -119,3 +119,7 @@ if np.argmax(model_out) == 0:print('Happy')
 if np.argmax(model_out) == 1:print('Sad')
 if np.argmax(model_out) == 2:print('Surprise')
 if np.argmax(model_out) == 3:print('Disgust')
+
+l = range(10)
+for i in l:
+	print(i)
